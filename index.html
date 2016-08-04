@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="optionsApp">
+<head>
+	<title>Options</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="angular.min.js"></script>
+	<script src="ui-bootstrap-tpls-2.0.1.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<div class="container">
+		<div class="row">
+			<label>
+				Spot price: <input type="text" ng-model="spotPrice" class="form-control">
+			</label>
+		</div>
+		<div class="row" ng-repeat="trade in trades">
+			<select ng-options="tradeType.name for tradeType in tradeTypes" ng-model="trade.tradeType"></select>
+			<select ng-options="optionType.name for optionType in optionTypes" ng-model="trade.optionType"></select>
+			<label>
+				Strike price: <input type="text" ng-model="trade.strike" class="form-control">
+			</label>
+			<label>
+				Premium: <input type="text" ng-model="trade.premium" class="form-control">
+			</label>
+			<label>
+				Qty: <input type="text" ng-model="trade.qty" class="form-control">
+			</label>
+		</div>
+		<div class="row">
+			<button class="btn btn-primary" ng-click="addTrade()">Add Trade</button>
+		</div>
+		<div class="row">
+			Net premium collected: <span>{{netPremium()}}</span>
+		</div>
+	</div>
+</body>
+</html>
