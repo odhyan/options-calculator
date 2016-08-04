@@ -1,0 +1,51 @@
+.navbar {
+	background: #398439;
+	border: 0;
+	border-radius: 0;
+}
+.navbar .navbar-brand {
+	color: #fff;
+}
+.setup {
+	border: 1px solid #e5e5e5;
+	border-left: 5px solid #398439;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+.setup .input {
+	padding: 20px 30px;
+}
+.setup .result {
+	padding: 8px 30px;
+	background: #f7f7f9;
+	border-top: 1px solid #e5e5e5;
+	font-size: 16px;
+}
+.setup .input > div {
+	padding: 4px 0;
+}
+.setup .input input {
+	width: 80%;
+}
+.setup .input .option-type {
+	padding-top: 24px;
+}
+.add-trade-btn-wrapper {
+	margin-top: 8px;
+}
+.net-profit {
+	line-height: 30px;
+}
+
+footer {
+	padding: 30px 0;
+}
+
+@media (min-width: 800px) {
+	.container {
+		width: 800px;
+	}
+	.delete-setup {
+		text-align: right;
+	}
+}

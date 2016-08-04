@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html ng-app="optionsApp">
 <head>
-	<title>Options</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Options Calculator</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="angular.min.js"></script>
@@ -9,31 +12,74 @@
 	<script src="app.js"></script>
 </head>
 <body ng-controller="MainCtrl">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="javascript:void(0)" class="navbar-brand">Options Calculator</a>
+			</div>
+		</div>
+	</nav>
 	<div class="container">
-		<div class="row">
-			<label>
-				Spot price: <input type="text" ng-model="spotPrice" class="form-control">
-			</label>
+		<div class="setup form-group" ng-repeat="setup in setups">
+			<div class="input">
+				<div>
+					<label>
+						Name <input type="text" ng-model="setup.name" class="form-control" placeholder="e.g. NIFTY">
+					</label>
+					<label>
+						Spot price <input type="text" ng-model="setup.spotPrice" class="form-control">
+					</label>
+				</div>
+				<div ng-repeat="trade in setup.trades">
+					<div class="row">
+						<div class="col-md-4 option-type">
+							<div class="btn-group">
+								<label class="btn btn-info" ng-model="trade.tradeType" uib-btn-radio="'buy'">Buy</label>
+								<label class="btn btn-info" ng-model="trade.tradeType" uib-btn-radio="'sell'">Sell</label>
+							</div>
+							<div class="btn-group">
+								<label class="btn btn-warning" ng-model="trade.optionType" uib-btn-radio="'call'">Call</label>
+								<label class="btn btn-warning" ng-model="trade.optionType" uib-btn-radio="'put'">Put</label>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-4">
+									<label>Strike price</label>
+									<input type="text" ng-model="trade.strike" class="form-control">
+								</div>
+								<div class="col-md-4">
+									<label>Premium</label>
+									<input type="text" ng-model="trade.premium" class="form-control">
+								</div>
+								<div class="col-md-4">
+									<label>Qty</label>
+									<input type="text" ng-model="trade.qty" class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="add-trade-btn-wrapper">
+					<button class="btn btn-default" ng-click="addTrade(setup)">Add Trade</button>
+				</div>
+			</div>
+			<div class="result">
+				<div class="row">
+					<div class="col-md-6 net-profit">Net profit: <strong>{{netProfit(setup)}}</strong></div>
+					<div class="col-md-6 delete-setup"><button class="btn btn-danger" ng-click="deleteSetup(setup)">Delete</button></div>
+				</div>
+			</div>
 		</div>
-		<div class="row" ng-repeat="trade in trades">
-			<select ng-options="tradeType.name for tradeType in tradeTypes" ng-model="trade.tradeType"></select>
-			<select ng-options="optionType.name for optionType in optionTypes" ng-model="trade.optionType"></select>
-			<label>
-				Strike price: <input type="text" ng-model="trade.strike" class="form-control">
-			</label>
-			<label>
-				Premium: <input type="text" ng-model="trade.premium" class="form-control">
-			</label>
-			<label>
-				Qty: <input type="text" ng-model="trade.qty" class="form-control">
-			</label>
-		</div>
-		<div class="row">
-			<button class="btn btn-primary" ng-click="addTrade()">Add Trade</button>
-		</div>
-		<div class="row">
-			Net premium collected: <span>{{netPremium()}}</span>
+		<div class="button-group">
+			<button class="btn btn-primary" ng-click="addSetup()">Add New Setup</button>
 		</div>
 	</div>
+
+	<footer>
+		<div class="container">
+			Copyright © Saurabh Odhyan
+		</div>
+	</footer>
 </body>
 </html>
