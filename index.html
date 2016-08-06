@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Options Calculator</title>
+	<title>Options Calculator - Best tool for calculating stock market options positions</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -17,13 +17,13 @@
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="javascript:void(0)" class="navbar-brand">Options Calculator</a>
+				<a href="javascript:void(0)" class="navbar-brand"><span class="glyphicon glyphicon-signal"></span> Options Calculator</a>
 			</div>
 		</div>
 	</nav>
 	<div class="container">
 		<div class="jumbotron" ng-hide="setups.length">
-			<p>This is a tool to calculate your open options in any trading market. You can add as many setups as you wish. Each setup will consist of one or multiple trades in a particular stock/index. All data you enter will be automatically saved on your local machine and NO information is sent to any remote servers.</p>
+			<p>This is a tool to calculate your open option positions in any trading market. You can add as many setups as you wish. Each setup will consist of one or more trades in a particular stock or index. All data you enter will be automatically saved on your local machine and NO information is sent to any remote servers.</p>
 		</div>
 		<div class="setup form-group" ng-repeat="setup in setups track by $index">
 			<div class="input">
@@ -82,14 +82,14 @@
 				<canvas class="chart chart-line" chart-data="chart.data[setup.id].profits" chart-labels="chart.data[setup.id].labels" chart-series="chart.series" chart-options="chart.options"></canvas>
     		</div>
 		</div>
-		<div class="button-group">
+		<div class="button-group text-center">
 			<button class="btn btn-primary" ng-click="addSetup()"><span class="glyphicon glyphicon-plus"></span> Add New Setup</button>
 		</div>
 	</div>
 
 	<footer>
 		<div class="container">
-			Copyright ©, 2016 www.optionscalculator.in. All rights reserved.
+			<div class="text-center">Copyright ©, 2016 www.optionscalculator.in. All rights reserved.</div>
 		</div>
 	</footer>
 </body>
