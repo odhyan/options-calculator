@@ -10,6 +10,13 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 		}
 	};
 
+	$scope.$watch('setups', function() {
+		angular.forEach($scope.setups, function(setup) {
+			$scope.updateChartData(setup);
+		});
+		DataService.saveSetups($scope.setups);
+	}, true);
+
 	$scope.addSetup = function() {
 		var setup = {
 			id: UtilService.getUniqueId(),
@@ -33,7 +40,7 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 
 	$scope.addTrade = function(setup) {
 		setup.trades.push({
-			id: getUniqueId(),
+			id: UtilService.getUniqueId(),
 			tradeType: "buy",
 			optionType: "call",
 			strike: 0,
@@ -65,9 +72,9 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 		return ret;
 	};
 
-	$scope.netProfit = function(setup, spotPrice) { console.log("netProfit");
+	$scope.netProfit = function(setup, spotPrice) {
 		if(!spotPrice) {
-			DataService.saveSetups($scope.setups);
+			//DataService.saveSetups($scope.setups);
 			spotPrice = parseInt(setup.spotPrice, 10);
 		} else {
 			//calculating for chart
@@ -107,7 +114,7 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 		}
 	};
 
-	$scope.updateChartData = function(setup) { console.log("updateChartData");
+	$scope.updateChartData = function(setup) {
 		spotPrice = parseInt(setup.spotPrice, 10);
 		if(spotPrice == 0) return 0;
 

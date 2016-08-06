@@ -75,7 +75,7 @@
 					<div class="col-md-6 delete-setup"><button class="btn btn-danger" ng-click="deleteSetup(setup)">Delete Setup</button></div>
 				</div>
 			</div>
-			<div class="chart-wrapper" ng-if="updateChartData(setup)">
+			<div class="chart-wrapper">
 				<canvas class="chart chart-line" chart-data="chart.data[setup.id].profits" chart-labels="chart.data[setup.id].labels" chart-series="chart.series" chart-options="chart.options"></canvas>
     		</div>
 		</div>
