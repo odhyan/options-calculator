@@ -10,7 +10,7 @@
 	border: 1px solid #e5e5e5;
 	border-left: 5px solid #398439;
 	border-radius: 3px;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 .setup .input {
 	padding: 20px 30px;
@@ -19,6 +19,7 @@
 	padding: 8px 30px;
 	background: #f7f7f9;
 	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
 	font-size: 16px;
 }
 .setup .input > div {
@@ -26,15 +27,23 @@
 }
 .setup .input input {
 	width: 80%;
+	text-transform: uppercase;
 }
-.setup .input .option-type {
+.setup .input .option-type,
+.setup .input .delete-trade {
 	padding-top: 24px;
 }
 .add-trade-btn-wrapper {
-	margin-top: 8px;
+	margin-top: 16px;
 }
 .net-profit {
 	line-height: 30px;
+}
+.green {
+	color: #093;
+}
+.red {
+	color: #DF514C;
 }
 
 footer {
