@@ -21,7 +21,7 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 	$scope.addSetup = function() {
 		var setup = {
 			id: UtilService.getUniqueId(),
-			name,
+			name: '',
 			spotPrice: 0,
 			trades: [],
 			profit: 0
