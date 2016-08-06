@@ -4,7 +4,7 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 	$scope.setups = DataService.getAllSetups();
 	$scope.chart = {
 		data: {},
-		series: ['Profit/Loss'],
+		series: ['Profit & Loss'],
 		options: {
 			responsive: true
 		}
@@ -12,6 +12,7 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 
 	$scope.$watch('setups', function() {
 		angular.forEach($scope.setups, function(setup) {
+			setup.profit = $scope.netProfit(setup);
 			$scope.updateChartData(setup);
 		});
 		DataService.saveSetups($scope.setups);

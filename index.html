@@ -22,7 +22,10 @@
 		</div>
 	</nav>
 	<div class="container">
-		<div class="setup form-group" ng-repeat="setup in setups">
+		<div class="jumbotron" ng-hide="setups.length">
+			<p>This is a tool to calculate your open options in any trading market. You can add as many setups as you wish. Each setup will consist of one or multiple trades in a particular stock/index. All data you enter will be automatically saved on your local machine and NO information is sent to any remote servers.</p>
+		</div>
+		<div class="setup form-group" ng-repeat="setup in setups track by $index">
 			<div class="input">
 				<div>
 					<label>
@@ -32,7 +35,7 @@
 						Spot price <input type="text" ng-model="setup.spotPrice" class="form-control">
 					</label>
 				</div>
-				<div ng-repeat="trade in setup.trades">
+				<div ng-repeat="trade in setup.trades  track by $index">
 					<div class="row">
 						<div class="col-md-4 option-type">
 							<div class="btn-group">
@@ -71,11 +74,11 @@
 			</div>
 			<div class="result">
 				<div class="row">
-					<div class="col-md-6 net-profit">Net Profit/Loss: <strong class="{{getProfitClass(setup)}}">{{trade.profit}}</strong></div>
+					<div class="col-md-6 net-profit">Profit & Loss: <strong class="{{getProfitClass(setup)}}">{{setup.profit}}</strong></div>
 					<div class="col-md-6 delete-setup"><button class="btn btn-danger" ng-click="deleteSetup(setup)">Delete Setup</button></div>
 				</div>
 			</div>
-			<div class="chart-wrapper">
+			<div class="chart-wrapper" ng-if="setup.spotPrice > 0">
 				<canvas class="chart chart-line" chart-data="chart.data[setup.id].profits" chart-labels="chart.data[setup.id].labels" chart-series="chart.series" chart-options="chart.options"></canvas>
     		</div>
 		</div>
@@ -86,7 +89,7 @@
 
 	<footer>
 		<div class="container">
-			Copyright © Saurabh Odhyan
+			Copyright ©, 2016 www.optionscalculator.in. All rights reserved.
 		</div>
 	</footer>
 </body>
