@@ -1,6 +1,6 @@
 var app = angular.module("optionsApp", ['ui.bootstrap', 'chart.js']);
 
-app.controller('MainCtrl', function($scope, DataService, UtilService) {
+app.controller('MainCtrl', ["$scope", "DataService", "UtilService", function($scope, DataService, UtilService) {
 	$scope.setups = DataService.getAllSetups();
 	$scope.chart = {
 		data: {},
@@ -141,9 +141,9 @@ app.controller('MainCtrl', function($scope, DataService, UtilService) {
 		return 1;
 	};
 
-});
+}]);
 
-app.factory('DataService', function(StorageService) {
+app.factory('DataService', ["StorageService", function(StorageService) {
 	var methods = {
 		getAllSetups: function() {
 			var data = StorageService.getData() || [];
@@ -154,7 +154,7 @@ app.factory('DataService', function(StorageService) {
 		}
 	};
 	return methods;
-});
+}]);
 
 app.factory('StorageService', function() {
 	var methods = {

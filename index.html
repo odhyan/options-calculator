@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="optionsApp">
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Options Calculator - Best tool for calculating stock market options positions</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Options Calculator - Best tool for calculating stock market options positions</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="description" content="Tool for calculating expected profit and loss for option positions in the stock market"/>
+	<meta name="keywords" content="Options calculator, Stock, Market, options, equity, derivatives, premium, volatility, bid, price, volume, contract, chart, profit, loss, position, live"/> 
+	<meta name="robots" content="INDEX,FOLLOW"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -54,7 +58,7 @@
 									<input type="text" ng-model="trade.strike" class="form-control">
 								</div>
 								<div class="col-md-3">
-									<label>Premium</label>
+									<label uib-tooltip="Price of 1 unit of option">Premium</label>
 									<input type="text" ng-model="trade.premium" class="form-control">
 								</div>
 								<div class="col-md-3">
